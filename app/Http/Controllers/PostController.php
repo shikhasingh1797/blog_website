@@ -11,12 +11,16 @@ class PostController extends Controller
     //
     public function postCreatePost(Request $request){
         // print_r($request->all());
+        $user_id = session('loginId');
         
         $post = new Post();
         $post->title = $request['title'];
         $post->body = $request['body'];
-        $post->user_id = $request['user_id'];
-        print_r($request->all());
+        $post->user_id =$user_id;
+        $data=User::where('id','=',Session::get('loginId'))->first();
+
+
+        // print_r($request->all());
 
 
         // $body1=strip_tags($request->body1);

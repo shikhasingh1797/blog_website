@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CustomAuthController;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\CommentController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -15,16 +17,7 @@ use App\Http\Controllers\PostController;
 */
 
 Route::get('/', [PostController::class,'getAllPosts']);
-// Route::post('/',['uses'=>'PostController@getAllPosts']);
-// Route::get('/signup', function () {
-//     return view('Signup');
-// });
-// Route::get('/login', function () {
-//     return view('Login');
-// });
-// Route::get('/front', function () {
-//     return view('front');
-// });
+
 Route::get('/login',[CustomAuthController::class,'login'])->middleware('alreadyLoggedIn');
 
 Route::get('/signup',[CustomAuthController::class,'signup']);
@@ -41,10 +34,4 @@ Route::get('/logout',[CustomAuthController::class,'logout']);
 
 Route::post('/createpost',['uses'=>'PostController@postCreatePost','as'=>'post.create']);
 
-// Route::get('/getAllPosts',['uses'=>'PostController@postCreatePost']);
-
-
-// Route::get('/createpost',['uses'=>'PostController@postCreatePost','as'=>'get.post']);
-
-
-// Route::post('/createpost',[PostController::class,'postCreatePost']);
+Route::get('/comment', [CommentController::class,'getcomment']);

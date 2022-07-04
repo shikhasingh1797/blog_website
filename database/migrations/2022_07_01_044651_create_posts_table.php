@@ -13,12 +13,12 @@ class CreatePostsTable extends Migration
      */
     public function up()
     {
-        Schema::create('posts', function (Blueprint $table) {
+        Schema::create('comments', function (Blueprint $table) {
             $table->id();
-            $table->varchar('title');
+            $table->varchar('post_id');
+            $table->varchar('user_id');
+            $table->varchar('comment');
             $table->timestamps();
-            $table->text('body');
-            $table->integer('user_id');
         });
     }
 
