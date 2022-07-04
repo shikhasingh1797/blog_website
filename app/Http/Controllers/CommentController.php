@@ -12,5 +12,5 @@ class CommentController extends Controller
     public function getcomment()
     {
         return view("auth.comment");
-    }
+    } 
 }
