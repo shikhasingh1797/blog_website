@@ -49,7 +49,6 @@ class CustomAuthController extends Controller
         $user=User::where('name','=',$request->name)->first();
         if($user){
             if(Hash::check($request->password,$user->password)){
-                // echo "Login successfully has done..";
                 $request->session()->put('loginId',$user->id);
                 return redirect('dashboard');
             }

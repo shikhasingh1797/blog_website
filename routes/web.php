@@ -34,4 +34,7 @@ Route::get('/logout',[CustomAuthController::class,'logout']);
 
 Route::post('/createpost',['uses'=>'PostController@postCreatePost','as'=>'post.create']);
 
-Route::get('/comment', [CommentController::class,'getcomment']);
+Route::get('comment', [CommentController::class,'getcomment']);
+
+
+Route::post('/post-comment',[CommentController::class,'postcomment'])->name('post-comment');

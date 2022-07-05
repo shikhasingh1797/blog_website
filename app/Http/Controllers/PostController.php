@@ -5,6 +5,7 @@ use App\Post;
 use App\User;
 use Illuminate\Http\Request;
 use DB;
+use Session;
 
 class PostController extends Controller
 {
@@ -17,6 +18,8 @@ class PostController extends Controller
         $post->title = $request['title'];
         $post->body = $request['body'];
         $post->user_id =$user_id;
+        // dd
+
         $data=User::where('id','=',Session::get('loginId'))->first();
 
 
@@ -25,7 +28,6 @@ class PostController extends Controller
 
         // $body1=strip_tags($request->body1);
 
-        // dd($request->all());
         $post->save();
         echo ("Posted Successfully..");
         // return redirect('dashboard');
