@@ -3,6 +3,10 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
+use App\Http\Controllers\CustomAuthController;
+use App\Http\Controllers\PostController;
+use App\Http\Controllers\CommentController;
+
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -17,3 +21,16 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+// User Signup
+Route::post('/signup-user',[CustomAuthController::class,'signupUser']);
+// User login
+Route::post('/login-user',[CustomAuthController::class,'loginUser']);
+// Create post
+Route::post('/createpost',[PostController::class,'postCreatePost']);
+// Get All Posts
+Route::get('/',[PostController::class,'getAllPosts']);
+
+
+
+// Post Comment
+Route::post('/post-comment/{id}',[CommentController::class,'postcomment']);

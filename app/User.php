@@ -45,4 +45,7 @@ class User extends Authenticatable
         return $this->hasMany('App\Post');
 
     }
+    public function category(){
+        return $this->hasOne(Category::class);
+    }
 }

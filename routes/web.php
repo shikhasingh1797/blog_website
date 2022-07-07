@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CustomAuthController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\CommentController;
+use App\Http\Controllers\CategoryController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -34,7 +36,17 @@ Route::get('/logout',[CustomAuthController::class,'logout']);
 
 Route::post('/createpost',['uses'=>'PostController@postCreatePost','as'=>'post.create']);
 
-Route::get('comment', [CommentController::class,'getcomment']);
+Route::get('/comment/{id}', [CommentController::class,'getcomment']);
 
 
-Route::post('/post-comment',[CommentController::class,'postcomment'])->name('post-comment');
+Route::post('/post-comment/{id}',[CommentController::class,'postcomment'])->name('post-comment/{id}');
+
+// Route::get('/post-comment/{id}', [PostController::class,'getAllComments']);
+
+// Route::get('/comment/{id}', [CommentController::class,'getAllComments']);
+
+
+
+
+// One to one relationship
+// Route::get

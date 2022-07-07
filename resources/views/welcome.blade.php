@@ -26,13 +26,20 @@ h2 {text-align: center;}
                 <td>{{$post->title}}</a></td>    
                 <td>{{$post->created_at}}</td>    
                 <td>{{$post->updated_at}}</td>    
-                <td>{{$post->body}}</td>    
-                <td>{{$post->user_id}}</td>    
-                <td colspan="2"><a href="comment">Action</a></td>  
+                <td>{{$post->body}}</td> 
+                <td>{{$post->user_id}}</td>
+                <td colspan="2"><a href="comment/{{$post->id}}">Action</a></td> 
             </a>
                 
             </tr>      
         @endforeach
+        <div class="inputContainer">
+        <input type="text" class="input" placeholder="All posts user name are here" name="name" value="{{old('name')}}">
+        <h6 class="" style="color:blue">
+            @if($errors->has('name'))
+                {{ $errors->first('name')}} 
+            @endif
+      </div>
 
         </table>    
     </body>    
