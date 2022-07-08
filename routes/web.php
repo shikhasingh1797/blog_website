@@ -5,6 +5,9 @@ use App\Http\Controllers\CustomAuthController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\postbycategory;
+
 
 
 /*
@@ -44,6 +47,23 @@ Route::post('/post-comment/{id}',[CommentController::class,'postcomment'])->name
 // Route::get('/post-comment/{id}', [PostController::class,'getAllComments']);
 
 // Route::get('/comment/{id}', [CommentController::class,'getAllComments']);
+Route::get('postcategory',[PostController::class,'index']);
+
+Route::get('postuser',[PostController::class,'postuser']);
+
+
+Route::get('postcomment',[PostController::class,'postcomment']);
+
+Route::get('usertag',[UserController::class,'usertag']);
+
+Route::get('posttag',[PostController::class,'posttag']);
+
+Route::get('postbycategory',[CategoryController::class,'postbycategory']);
+
+Route::get('getpostbytag',[PostController::class,'getpostbytag']);
+
+
+
 
 
 

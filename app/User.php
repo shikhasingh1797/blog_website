@@ -45,7 +45,8 @@ class User extends Authenticatable
         return $this->hasMany('App\Post');
 
     }
-    public function category(){
-        return $this->hasOne(Category::class);
+    public function tag(){
+        return $this->hasMany(Tags::class, 'id', 'tag_id');
     }
+    
 }

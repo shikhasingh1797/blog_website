@@ -7,7 +7,10 @@ use Illuminate\Http\Request;
 use DB;
 use Session;
 use App\Models\Posts;
+use App\Tags;
 use App\Models\Category;
+use Response;
+use App\Http\CategoryController;
 
 
 class PostController extends Controller
@@ -37,5 +40,38 @@ class PostController extends Controller
 
         
     }
-    // public function
+
+    public function index(){
+       $post=Post::with('category')->get();
+
+       return Response::json(["status"=>"RXSUCCESS", "message"=>"Post data", "data"=>$post],200);
+    }
+    public function postuser(){
+        $post=Post::with('user')->get();
+ 
+        return Response::json(["status"=>"RXSUCCESS", "message"=>"Post data", "data"=>$post],200);
+     }
+
+    public function postcomment(){
+        $post=Post::with('comment')->get();
+
+       return Response::json(["status"=>"RXSUCCESS", "message"=>"Post data", "data"=>$post],200);
+
+    }
+    public function posttag(Request $request){
+          $query = $request['query'];
+          $query=$query==null?"%":$query."%";
+        // $query= $request->query('title');
+        // $query= $request->query('body');
+        // $query= $request->query('id');
+        $post=Post::with('user','tag','category','comment')->where('title' , 'like' , $query)->orWhere('body' , 'like' , $query)->get();
+
+       return Response::json(["status"=>"RXSUCCESS", "message"=>"Post data", "data"=>$post],200);
+
+    }
+    public function getpostbytag(){
+        $post = Tags::with('post')->get();
+        return Response::json(["status"=>"RXSUCCESS", "message"=>"Post data by tag", "data"=>$post],200);
+    }
+    
 }

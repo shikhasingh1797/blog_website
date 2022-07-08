@@ -6,6 +6,9 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CustomAuthController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\CommentController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\CategoryController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -34,3 +37,15 @@ Route::get('/',[PostController::class,'getAllPosts']);
 
 // Post Comment
 Route::post('/post-comment/{id}',[CommentController::class,'postcomment']);
+// Get category with posts
+Route::get('postcategory',[PostController::class,'index']);
+
+Route::get('postcomment',[PostController::class,'postcomment']);
+
+Route::get('usertag',[UserController::class,'usertag']);
+
+Route::get('posttag',[PostController::class,'posttag']);
+
+Route::get('postbycategory',[CategoryController::class,'postbycategory']);
+
+Route::get('getpostbytag',[PostController::class,'getpostbytag']);
